@@ -4,17 +4,21 @@ public static void main (String[]args){
     
     boolean numero = true;
     int a = 2;
-    App test = new App();
-
-    test.testPrintIn(numero, a);
+    
+    Methods methods = new Methods();
+    methods.testPrintIn(numero, a);
     }
 
-    public void testPrintIn(boolean numero, int a)
+    public static  class Methods{
+
+    public  void testPrintIn(boolean numero, int a)
     {
         if(numero && a==2){
             System.out.println(numero);}
         else{
-            System.out.println("Error" + "!= Or =!");}
+            System.out.println("Error" + "!= Or !=");}
     }
+ }
+
 
 }   
