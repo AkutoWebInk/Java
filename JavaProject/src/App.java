@@ -5,7 +5,7 @@ public static void main (String[]args){
     boolean numero = true;
     int a = 2;
     App test = new App();
-    
+
     test.testPrintIn(numero, a);
     }
 
@@ -14,7 +14,7 @@ public static void main (String[]args){
         if(numero && a==2){
             System.out.println(numero);}
         else{
-            System.out.println("Error" + "!= && =!");}
+            System.out.println("Error" + "!= Or =!");}
     }
 
 }   
