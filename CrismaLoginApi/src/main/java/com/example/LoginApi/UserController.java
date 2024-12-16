@@ -23,12 +23,14 @@ public class UserController {
     String userUserProfilePic;
 
     @GetMapping("/userById")
-    public User getUserById(@RequestParam Long id, @RequestParam String password){
+    public String getUserById(@RequestParam Long id, @RequestParam String password){
 
-        System.out.println("API CALL FROM Python - Requesting validation - \n"+"ID: "+id+"\n"+"PASSWORD: "+password);
+        System.out.println("\nAPI CALL FROM Crisma Manager - Requesting validation -\n");
+        System.out.println("User ID: "+id+"\n"+"User PASSWORD: "+password);
+
         //get the user info inside the server-db via id
         User dbUserInfo = userRespository.findById(id).orElse(null);
-        
+         
         //filter server-api user info 
         if (dbUserInfo != null){
          userId = dbUserInfo.getId();
@@ -38,7 +40,18 @@ public class UserController {
          userAccessLevel = dbUserInfo.getAccessLevel();
          userUserProfilePic = dbUserInfo.getUserpfp();
         }
-        return dbUserInfo;
+        if (password.equals(userPassword))
+        {
+            System.out.println("\nDatabase password found for ID "+id +": "+password);
+            System.out.println("\nResquested credentials matched with server database. Login Authorized.");
+            return "Password Validated, login authorized";
+        }
+        else if(!password.equals(userPassword))
+        {
+            System.out.println("Requested credentials do not match server database");
+            return "Validation negated, check API terminal for details";
+        }
+        else {return "";}
     }
 
 }
